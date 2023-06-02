@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: merlin-sessions-controller
+  namespace: default
+  labels:
+    app: merlin-sessions-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: merlin-sessions-controller
+  template:
+    metadata:
+      labels:
+        app: merlin-sessions-controller
+    spec:
+      containers:
+        - name: merlin-sessions-controller
+          image: 592636539130.dkr.ecr.us-east-1.amazonaws.com/merlin-sessions-controller:latest
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 250m
+            limits:
+              cpu: 4
+          ports:
+          - containerPort: 3535
+          volumeMounts:
+          - name: merlin-sessions-controller-config-volume
+            mountPath: /app/.env
+            subPath: .env
+      volumes:
+        - name: merlin-sessions-controller-config-volume
+          configMap:
+            name: merlin-sessions-controller-config

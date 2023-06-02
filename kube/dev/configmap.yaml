@@ -1,0 +1,14 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: merlin-sessions-controller-dev-config
+  namespace: default
+data:
+  .env: |
+    REDIS_IP=merlin-sessions-dev.y9zcam.clustercfg.memorydb.us-east-1.amazonaws.com
+    REDIS_PORT=6379
+    REDIS_PWD=
+    DB_HOST=eventtracker-bd-develop.cluster-cba3qk5otxyc.us-east-1.rds.amazonaws.com
+    DB_USER=eventtracker
+    DB_PWD=YM2DyFU6H0hAEfd6QdHm
+    DB_NAME=eventtracker

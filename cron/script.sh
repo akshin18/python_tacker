@@ -1,0 +1,1 @@
+cd /app/ && python3 /app/main.py >> /proc/1/fd/1 2>&1
